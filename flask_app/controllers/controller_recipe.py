@@ -53,5 +53,26 @@ def recipe_update():
     model_recipe.Recipe.update_one(data)
     return redirect('/dashboard')
 
+@app.route('/recipe/destroy/<int:id>')
+def user_destroy(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    data = {
+        'id' : id
+    }
+    model_recipe.Recipe.delete_one(data)
+    return redirect('/dashboard')
 
-
+@app.route('/recipe/<int:id>')
+def recipe_show(id):
+    if 'user_id' not in session:
+        return redirect('/')
+    recipe_data = {
+        'id' : id
+    }
+    data = {
+        'id' : session['user_id']
+    }
+    recipe = model_recipe.Recipe.get_one(recipe_data)
+    user = model_user.User.get_one(data)
+    return render_template('recipe-show.html', recipe=recipe, user=user)

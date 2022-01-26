@@ -22,28 +22,6 @@ class User:
         query = "INSERT INTO users (first_name , last_name , email, password) VALUES ( %(first_name)s , %(last_name)s , %(email)s, %(password)s);"
         return connectToMySQL(DATABASE).query_db( query, data)
 
-
-
-
-    # @classmethod
-    # def get_one_recipe(cls, data):
-    #     query = "SELECT * FROM users LEFT JOIN recipes ON users.id = recipes.user_id where users.id = %(id)s;"
-    #     results = connectToMySQL(DATABASE).query_db(query,data)
-    #     if results: 
-    #         user = cls(results[0])
-    #         for row in results:
-    #             recipe = {
-    #                 'id': row['recipes.id'],
-    #                 'name': row['name'],
-    #                 'description': row['description'],
-    #                 'instructions': row['description'],
-    #                 'time': row['time'],
-    #                 'created_at': row['recipes.created_at'],
-    #                 'updated_at': row['recipes.updated_at']
-    #             }
-    #         user.recipes.append(Recipe(recipe))
-    #         return user
-    #     return []
     @classmethod
     def get_one(cls, data):
         query = "SELECT * FROM users WHERE id = %(id)s;"

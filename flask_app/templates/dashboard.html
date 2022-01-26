@@ -33,10 +33,10 @@
                             <td>No</td>
                         {% endif %}
                         <td>
-                            <a href="/recipe/{{ recipe.id }}">View Intructions</a> 
+                            <a href="/recipe/{{ recipe.id }}">View Intructions</a> | 
                             {% if recipe.user_id == session.user_id %}
                                 <a href="/recipe/edit/{{ recipe.id }}">Edit</a> |
-                                <a href="/recipe/destroy/{{ recipe.id }}">delete</a>
+                                <a href="/recipe/destroy/{{ recipe.id }}">Delete</a>
                             {% endif %}
                         </td>
                     </tr>
